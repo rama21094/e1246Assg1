@@ -1,9 +1,7 @@
 import time
 import math
 import pickle
-import random
 import numpy
-
 
 start = time.time()
 
@@ -15,8 +13,6 @@ Bigrams = pickle.load(pickle_in)
 
 pickle_in = open("brownTrigrams.pickle", "rb")
 Trigrams = pickle.load(pickle_in)
-
-print("Pickle in time:" + str(time.time() - start))
 
 choices = {}
 sent = ['<s>']
@@ -54,13 +50,13 @@ while not(sent[-1] == "<\s>"):
             choices[key1] = math.pow(10, val1)
         # print("Unigram try: " + str(time.time() - start))
     try:
-        nextWord = random.choices(list(choices.keys()), weights=list(choices.values()))
+        nextWord = numpy.random.choice(list(choices.keys()), p=list(choices.values()))
     except ValueError:
         weights = list(choices.values())
         normWeights = [float(i) / sum(weights) for i in weights]
-        nextWord = random.choices(list(choices.keys()), weights=normWeights)
+        nextWord = numpy.random.choice(list(choices.keys()), p=normWeights)
 
-    sent.append(str(nextWord[0]))
+    sent.append(str(nextWord))
     # print(time.time() - start)
 
 print(' '.join(sent))
