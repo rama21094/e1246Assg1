@@ -10,4 +10,4 @@ Setting3.py - Trained on Brown and Gutenberg and tested on Brown Corpus
 
 Setting4.py - Trained on Brown and Gutenberg and tested on Gutenberg Corpus
 
-generate_sentence.py can be executed by running the script generate.sh
+generate_sentence.py can be executed by running the script generate_sentence.sh
